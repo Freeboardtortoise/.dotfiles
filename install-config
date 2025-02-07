@@ -1,0 +1,53 @@
+echo "installing packages"
+sudo pacman -Syu
+sudo pacman -S hyprland
+sudo pacman -S hyprlock
+sudo pacman -S hyprpaper
+sudo pacman -S waybar
+sudo pacman -S swaylock
+sudo pacman -S waybar
+sudo pacman -S ghostty
+sudo pacman -S wofi
+sudo pacman -S dolphin
+echo "coppying hyprland related config files"
+cd 
+cp -f dotfiles/hypr/hyprland.conf .config/hypr/hyprland.conf
+cp -f dotfiles/hypr/hyprpaper.conf .config/hypr/hyprpaper.conf
+cp -f dotfiles/hypr/hyprlock.conf .config/hypr/hyprlock.conf
+
+echo "waybarring"
+
+cd .config
+mkdir waybar
+cd
+
+cp dotfiles/waybar/config.jsonc .config/waybar/
+cd dotfiles/waybar/style.css .config/waybar/
+
+echo "Ghostty config"
+
+cp -f dotfiles/ghostty/config .config/ghostty/config
+
+echo "installing yay"
+
+sudo pacman -S --needed base-devel git
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+yay --version
+
+echo "installing pycharm"
+sudo pacman -S pycharm-community-edition
+
+echo "installing git"
+
+sudo pacman -S git
+
+
+
+
+
+echo "cleaning up"
+
+cd 
+rm -r dotfiles
