@@ -43,11 +43,10 @@ echo "installing git"
 
 sudo pacman -S git
 
-
-
-
+echo "install OBS-"
+sudo pacman -S pipewire xdg-desktop-portal xdg-dektop-portal-wlr
+sudo pacman -S qt5-wayland qt5ct
 
 echo "cleaning up"
-
 cd 
 rm -r dotfiles
