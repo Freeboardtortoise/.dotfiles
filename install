@@ -50,8 +50,9 @@ cp .dotfiles/lockscreen.png Photos
 
 cd
 cd .config/autostart
-touch hyprland
-echo "hyprland" >> hyprland
+touch hyprland.sh
+echo "hyprland" >> hyprland.sh
+chmod +x hyprland.sh
 cd
 
 echo "cleaning up"
