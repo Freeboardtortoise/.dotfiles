@@ -11,7 +11,7 @@ sudo pacman -S -q --noconfirm git
 sudo pacman -S -q --noconfirm pycharm-community-edition
 
 echo "coppying hyprland related config files"
-cd 
+cd
 cp -f .dotfiles/hypr/hyprland.conf .config/hypr/hyprland.conf
 cp -f .dotfiles/hypr/hyprpaper.conf .config/hypr/hyprpaper.conf
 cp -f .dotfiles/hypr/hyprlock.conf .config/hypr/hyprlock.conf
@@ -48,7 +48,12 @@ cd
 cp .dotfiles/home_screen.png Photos
 cp .dotfiles/lockscreen.png Photos
 
+cd
+cd .config/autostart
+touch hyprland
+echo "hyprland" >> hyprland
+cd
 
 echo "cleaning up"
-cd 
+cd
 sudo rm -r .dotfiles
