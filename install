@@ -1,20 +1,20 @@
 echo "installing packages"
-sudo pacman -Syu
-sudo pacman -S -y hyprland
-sudo pacman -S -y hyprlock
-sudo pacman -S -y hyprpaper
-sudo pacman -S -y aybar
-sudo pacman -S -y ghostty
-sudo pacman -S -y wofi
-sudo pacman -S -y dolphin
-sudo pacman -S -y git
-sudo pacman -S pycharm-community-edition
+sudo pacman -Syu --noconfirm
+sudo pacman -S -q --noconfirm hyprland
+sudo pacman -S -q --noconfirm hyprlock
+sudo pacman -S -q --noconfirm hyprpaper
+sudo pacman -S -q --noconfirm aybar
+sudo pacman -S -q --noconfirm ghostty
+sudo pacman -S -q --noconfirm wofi
+sudo pacman -S -q --noconfirm dolphin
+sudo pacman -S -q --noconfirm git
+sudo pacman -S -q --noconfirm pycharm-community-edition
 
 echo "coppying hyprland related config files"
 cd 
-cp -f dotfiles/hypr/hyprland.conf .config/hypr/hyprland.conf
-cp -f dotfiles/hypr/hyprpaper.conf .config/hypr/hyprpaper.conf
-cp -f dotfiles/hypr/hyprlock.conf .config/hypr/hyprlock.conf
+cp -f .dotfiles/hypr/hyprland.conf .config/hypr/hyprland.conf
+cp -f .dotfiles/hypr/hyprpaper.conf .config/hypr/hyprpaper.conf
+cp -f .dotfiles/hypr/hyprlock.conf .config/hypr/hyprlock.conf
 
 echo "waybarring"
 
@@ -22,26 +22,33 @@ cd .config
 mkdir waybar
 cd
 
-cp dotfiles/waybar/config.jsonc .config/waybar/
-cd dotfiles/waybar/style.css .config/waybar/
+cp .dotfiles/waybar/config.jsonc .config/waybar/
+cd .dotfiles/waybar/style.css .config/waybar/
 
 echo "Ghostty config"
 
-cp -f dotfiles/ghostty/config .config/ghostty/config
+cp -f .dotfiles/ghostty/config .config/ghostty/config
 
 echo "installing yay"
 
-sudo pacman -S --needed base-devel git
+sudo pacman -S -q --needed base-devel --noconfirm
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si
-yay --version
+makepkg -si --noconfirm --needed
 
 echo "installing OBS-"
-sudo pacman -S pipewire xdg-desktop-portal xdg-dektop-portal-wlr
-sudo pacman -S qt5-wayland qt5ct
+sudo pacman -S --noconfirm pipewire xdg-desktop-portal xdg-dektop-portal-wlr
+sudo pacman -S --noconfirm qt5-wayland qt5ct
+
+echo "coppying homescreen and lockscreen"
+
+cd
+mkdir Photos
+cd
+cp .dotfiles/home_screen.png Photos
+cp .dotfiles/lockscreen.png Photos
 
 
 echo "cleaning up"
 cd 
-rm -r .dotfiles
+sudo rm -r .dotfiles
