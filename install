@@ -1,14 +1,15 @@
 echo "installing packages"
 sudo pacman -Syu
-sudo pacman -S hyprland
-sudo pacman -S hyprlock
-sudo pacman -S hyprpaper
-sudo pacman -S waybar
-sudo pacman -S swaylock
-sudo pacman -S waybar
-sudo pacman -S ghostty
-sudo pacman -S wofi
-sudo pacman -S dolphin
+sudo pacman -S -y hyprland
+sudo pacman -S -y hyprlock
+sudo pacman -S -y hyprpaper
+sudo pacman -S -y aybar
+sudo pacman -S -y ghostty
+sudo pacman -S -y wofi
+sudo pacman -S -y dolphin
+sudo pacman -S -y git
+sudo pacman -S pycharm-community-edition
+
 echo "coppying hyprland related config files"
 cd 
 cp -f dotfiles/hypr/hyprland.conf .config/hypr/hyprland.conf
@@ -36,17 +37,11 @@ cd yay
 makepkg -si
 yay --version
 
-echo "installing pycharm"
-sudo pacman -S pycharm-community-edition
-
-echo "installing git"
-
-sudo pacman -S git
-
-echo "install OBS-"
+echo "installing OBS-"
 sudo pacman -S pipewire xdg-desktop-portal xdg-dektop-portal-wlr
 sudo pacman -S qt5-wayland qt5ct
 
+
 echo "cleaning up"
 cd 
-rm -r dotfiles
+rm -r .dotfiles
