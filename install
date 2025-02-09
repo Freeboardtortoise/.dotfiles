@@ -8,10 +8,15 @@ sudo pacman -S -q --noconfirm ghostty
 sudo pacman -S -q --noconfirm wofi
 sudo pacman -S -q --noconfirm dolphin
 sudo pacman -S -q --noconfirm git
+sudo pacman -S -q --noconfirm firewalld ipset ebtables
+sudo pacman -S -q --noconfirm dust
+sudo pacman -S -q --noconfirm zellij
+sudo pacman -S -q --noconfirm btop
+
 sudo pacman -S -q --noconfirm pycharm-community-edition
 
 echo "coppying hyprland related config files"
-cd
+cd 
 cp -f .dotfiles/hypr/hyprland.conf .config/hypr/hyprland.conf
 cp -f .dotfiles/hypr/hyprpaper.conf .config/hypr/hyprpaper.conf
 cp -f .dotfiles/hypr/hyprlock.conf .config/hypr/hyprlock.conf
@@ -36,6 +41,9 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm --needed
 
+echo "installing homebrew"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 echo "installing OBS-"
 sudo pacman -S --noconfirm pipewire xdg-desktop-portal xdg-dektop-portal-wlr
 sudo pacman -S --noconfirm qt5-wayland qt5ct
@@ -48,13 +56,11 @@ cd
 cp .dotfiles/home_screen.png Photos
 cp .dotfiles/lockscreen.png Photos
 
-cd
-cd .config/autostart
-touch hyprland.sh
-echo "hyprland" >> hyprland.sh
-chmod +x hyprland.sh
-cd
+sudo systemctl enable firewalld
+sudo systemctl enable --now firewalld
+
+mitigations=off
 
 echo "cleaning up"
-cd
+cd 
 sudo rm -r .dotfiles
