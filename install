@@ -15,6 +15,7 @@ sudo pacman -S -q --noconfirm zellij
 sudo pacman -S -q --noconfirm btop
 sudo pacman -S -q --noconfirm pycharm-community-edition
 sudo pacman -S -q --noconfirm firefox
+sudo pacman -S -q --noconfirm ttf-font-awesome
 
 echo "coppying hyprland related config files"
 cd
@@ -29,7 +30,7 @@ mkdir waybar
 cd
 
 cp .dotfiles/waybar/config.jsonc .config/waybar/
-cd .dotfiles/waybar/style.css .config/waybar/
+cp .dotfiles/waybar/style.css .config/waybar/
 
 echo "Ghostty config"
 
