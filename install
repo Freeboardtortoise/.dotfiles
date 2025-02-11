@@ -1,25 +1,25 @@
 echo "installing packages"
 sudo pacman -Syu --noconfirm
-sudo pacman -S -q --noconfirm hyprland
-sudo pacman -S -q --noconfirm hyprlock
-sudo pacman -S -q --noconfirm hyprpaper
-sudo pacman -S -q --noconfirm waybar
-sudo pacman -S -q --noconfirm aybar
-sudo pacman -S -q --noconfirm ghostty
-sudo pacman -S -q --noconfirm wofi
-sudo pacman -S -q --noconfirm dolphin
-sudo pacman -S -q --noconfirm git
-sudo pacman -S -q --noconfirm firewalld ipset ebtables
-sudo pacman -S -q --noconfirm dust
-sudo pacman -S -q --noconfirm zellij
-sudo pacman -S -q --noconfirm btop
-sudo pacman -S -q --noconfirm pycharm-community-edition
-sudo pacman -S -q --noconfirm firefox
-sudo pacman -S -q --noconfirm ttf-font-awesome
+sudo pacman -S -q --noconfirm hyprland --needed
+sudo pacman -S -q --noconfirm hyprlock --needed
+sudo pacman -S -q --noconfirm hyprpaper --needed
+sudo pacman -S -q --noconfirm waybar --needed
+sudo pacman -S -q --noconfirm alacritty --needed
+sudo pacman -S -q --noconfirm micro vim --needed
+sudo pacman -S -q --noconfirm wofi --needed
+sudo pacman -S -q --noconfirm dolphin --needed
+sudo pacman -S -q --noconfirm git --needed
+sudo pacman -S -q --noconfirm firewalld ipset ebtables --needed
+sudo pacman -S -q --noconfirm dust --needed
+sudo pacman -S -q --noconfirm zellij --needed
+sudo pacman -S -q --noconfirm btop --needed
+sudo pacman -S -q --noconfirm pycharm-community-edition --needed
+sudo pacman -S -q --noconfirm firefox --needed
+sudo pacman -S -q --noconfirm ttf-font-awesome --needed
 
 echo "coppying hyprland related config files"
 cd
-cp -f .dotfiles/hypr/hyprland.conf .config/hypr/hyprland.conf
+cp .dotfiles/hypr/hyprland.conf .config/hypr/
 cp .dotfiles/hypr/hyprpaper.conf .config/hypr/
 cp .dotfiles/hypr/hyprlock.conf .config/hypr/
 
