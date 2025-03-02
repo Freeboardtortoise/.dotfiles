@@ -43,6 +43,8 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm --needed
 
+yay -S downgrade
+
 echo "installing homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
