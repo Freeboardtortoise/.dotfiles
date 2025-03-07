@@ -13,9 +13,8 @@ sudo pacman -S -q --noconfirm firewalld ipset ebtables --needed
 sudo pacman -S -q --noconfirm dust --needed
 sudo pacman -S -q --noconfirm zellij --needed
 sudo pacman -S -q --noconfirm btop --needed
-sudo pacman -S -q --noconfirm pycharm-community-edition --needed
-sudo pacman -S -q --noconfirm firefox --needed
-sudo pacman -S -q --noconfirm ttf-font-awesome --needed
+sudo pacman -S -q pycharm-community-edition --needed
+sudo pacman -S -q --noconfirm ttf-font-awesome --needed\
 
 echo "coppying hyprland related config files"
 cd
@@ -43,7 +42,7 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm --needed
 
-yay -S downgrade
+yay -S opera
 
 echo "installing homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
