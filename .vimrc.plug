@@ -1,0 +1,28 @@
+call plug#begin('~/.vim/plugged')
+
+"Fugitive Vim Github Wrapper
+Plug 'tpope/vim-fugitive'
+
+"Syntastic
+
+Plug 'rkulla/pydiction'
+
+"Nerd tree
+Plug 'scrooloose/nerdtree'
+
+"Nerd commenter
+Plug 'scrooloose/nerdcommenter'
+
+"auto complete
+Plug 'valloric/youcompleteme'
+
+"python syntax highlighting
+Plug 'hdima/python-syntax'
+
+"git commit browser
+Plug 'junegunn/gv.vim'
+
+"fuzzy finder
+Plug 'junegunn/fzf'
+
+call plug#end()
