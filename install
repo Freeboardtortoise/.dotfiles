@@ -64,6 +64,15 @@ sudo systemctl enable --now firewalld
 
 mitigations=off
 
+echo "installing vim"
+sudo pacman -q --noconfirm vim
+sudo pacman -S curl -q --noconfirm
+cd ~/
+
+
+
+curl -flo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug.vim
+
 echo "cleaning up"
 cd 
 sudo rm -r .dotfiles
