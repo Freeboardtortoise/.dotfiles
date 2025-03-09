@@ -70,8 +70,14 @@ sudo pacman -S curl -q --noconfirm
 cd ~/
 
 
+echo "customising vim"
+cd
+curl -flo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
+cd .dotfiles
+cp .vimrc ~/
+cp .vimrc.plug ~/
+mkdir -p .vim/plug
 
-curl -flo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "cleaning up"
 cd 
