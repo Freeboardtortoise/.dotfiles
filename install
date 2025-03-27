@@ -14,7 +14,9 @@ sudo pacman -S -q --noconfirm dust --needed
 sudo pacman -S -q --noconfirm zellij --needed
 sudo pacman -S -q --noconfirm btop --needed
 sudo pacman -S -q pycharm-community-edition --needed
-sudo pacman -S -q --noconfirm ttf-font-awesome --needed\
+sudo pacman -S -q --noconfirm ttf-font-awesome --needed
+sudo pacman -S -q --noconfirm --needed nvidia-dkms
+sudo pacman -S -q --noconform --needed nvidia
 
 echo "coppying hyprland related config files"
 cd
@@ -76,8 +78,11 @@ curl -flo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 cd .dotfiles
 cp .vimrc ~/
 cp .vimrc.plug ~/
-mkdir -p .vim/plug
-
+mkdir -p .vim
+cd .vim
+mkdir plug
+mkdir plugged
+mkdir autoload
 
 echo "cleaning up"
 cd 
