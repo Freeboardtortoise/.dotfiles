@@ -15,8 +15,7 @@ sudo pacman -S -q --noconfirm zellij --needed
 sudo pacman -S -q --noconfirm btop --needed
 sudo pacman -S -q pycharm-community-edition --needed
 sudo pacman -S -q --noconfirm ttf-font-awesome --needed
-sudo pacman -S -q --noconfirm --needed nvidia-dkms
-sudo pacman -S -q --noconform --needed nvidia
+sudo pacman -S -q --noconfirm --needed lib32-nvidia-utils egl-wayland nvidia
 
 echo "coppying hyprland related config files"
 cd
