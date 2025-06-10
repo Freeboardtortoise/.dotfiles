@@ -1,90 +1,59 @@
-echo "installing packages"
-sudo pacman -Syu --noconfirm
-sudo pacman -S -q --noconfirm hyprland --needed
-sudo pacman -S -q --noconfirm hyprlock --needed
-sudo pacman -S -q --noconfirm hyprpaper --needed
-sudo pacman -S -q --noconfirm waybar --needed
-sudo pacman -S -q --noconfirm alacritty --needed
-sudo pacman -S -q --noconfirm micro vim --needed
-sudo pacman -S -q --noconfirm wofi --needed
-sudo pacman -S -q --noconfirm dolphin --needed
-sudo pacman -S -q --noconfirm git --needed
-sudo pacman -S -q --noconfirm firewalld ipset ebtables --needed
-sudo pacman -S -q --noconfirm dust --needed
-sudo pacman -S -q --noconfirm zellij --needed
-sudo pacman -S -q --noconfirm btop --needed
-sudo pacman -S -q pycharm-community-edition --needed
-sudo pacman -S -q --noconfirm ttf-font-awesome --needed
-sudo pacman -S -q --noconfirm --needed lib32-nvidia-utils egl-wayland nvidia
+echo "Installing packages..."
+sudo pacman -S -q --noconfirm --needed \
+    hyprland hyprlock hyprpaper waybar kitty wofi \
+    micro vim dolphin git zellij btop dust \
+    firewalld ipset ebtables \
+    zsh ttf-font-awesome ttf-firacode-nerd \
+    lib32-nvidia-utils egl-wayland nvidia nvidia-utils nvidia-settings \
+    pycharm-community-edition curl firefox
+    
+echo "Copying Hyprland-related config files..."
+mkdir -p ~/.config/hypr
+cp ~/.dotfiles/hypr/hyprland.conf ~/.config/hypr/
+cp ~/.dotfiles/hypr/hyprpaper.conf ~/.config/hypr/
+cp ~/.dotfiles/hypr/hyprlock.conf ~/.config/hypr/
 
-echo "coppying hyprland related config files"
-cd
-cp .dotfiles/hypr/hyprland.conf .config/hypr/
-cp .dotfiles/hypr/hyprpaper.conf .config/hypr/
-cp .dotfiles/hypr/hyprlock.conf .config/hypr/
+echo "Setting up Waybar config..."
+mkdir -p ~/.config/waybar
+cp ~/.dotfiles/waybar/config.jsonc ~/.config/waybar/
+cp ~/.dotfiles/waybar/style.css ~/.config/waybar/
 
-echo "waybarring"
+echo "Setting up Ghostty config..."
+mkdir -p ~/.config/ghostty
+cp -f ~/.dotfiles/ghostty/config ~/.config/ghostty/config
 
-cd .config
-mkdir waybar
-cd
-
-cp .dotfiles/waybar/config.jsonc .config/waybar/
-cp .dotfiles/waybar/style.css .config/waybar/
-
-echo "Ghostty config"
-
-cp -f .dotfiles/ghostty/config .config/ghostty/config
-
-echo "installing yay"
-
+echo "Installing yay..."
 sudo pacman -S -q --needed base-devel --noconfirm
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si --noconfirm --needed
+[ -d yay ] || git clone https://aur.archlinux.org/yay.git
+cd yay && makepkg -si --noconfirm --needed
+cd ~
 
-yay -S opera
+echo "Installing zen browser via yay..."
+yay -S zen-browser-bin
 
-echo "installing homebrew"
+echo "Installing Homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-echo "installing OBS-"
-sudo pacman -S --noconfirm pipewire xdg-desktop-portal xdg-dektop-portal-wlr
-sudo pacman -S --noconfirm qt5-wayland qt5ct
+echo "Installing OBS dependencies..."
+sudo pacman -S --noconfirm pipewire xdg-desktop-portal xdg-desktop-portal-wlr qt5-wayland qt5ct
 
-echo "coppying homescreen and lockscreen"
+echo "Copying homescreen and lockscreen..."
+mkdir -p ~/Photos
+cp ~/.dotfiles/home_screen.png ~/Photos/
+cp ~/.dotfiles/lockscreen.png ~/Photos/
 
-cd
-mkdir Photos
-cd
-cp .dotfiles/home_screen.png Photos
-cp .dotfiles/lockscreen.png Photos
-
-sudo systemctl enable firewalld
+echo "Enabling firewall..."
 sudo systemctl enable --now firewalld
 
-mitigations=off
+echo "Setting up Vim..."
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+cp ~/.dotfiles/.vimrc ~/
+cp ~/.dotfiles/.vimrc.plug ~/
+mkdir -p ~/.vim/plug ~/.vim/plugged ~/.vim/autoload
 
-echo "installing vim"
-sudo pacman -q --noconfirm vim
-sudo pacman -S curl -q --noconfirm
-cd ~/
+echo "Setting up Zsh..."
+chsh -s /bin/zsh
+yay -S --noconfirm zsh-theme-powerlevel10k-git
+cp ~/.dotfiles/.p10k.zsh ~/
 
-
-echo "customising vim"
-cd
-curl -flo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
-cd .dotfiles
-cp .vimrc ~/
-cp .vimrc.plug ~/
-mkdir -p .vim
-cd .vim
-mkdir plug
-mkdir plugged
-mkdir autoload
-
-echo "cleaning up"
-cd 
-sudo rm -r .dotfiles
-
-reboot -h now
+# rm -rf ~/.dotfiles
