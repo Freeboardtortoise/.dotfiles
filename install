@@ -56,4 +56,6 @@ chsh -s /bin/zsh
 yay -S --noconfirm zsh-theme-powerlevel10k-git
 cp ~/.dotfiles/.p10k.zsh ~/
 
+# adding the hyprland to the startup list
+cp ~/.dotfiles/.bash_profile ~/
 # rm -rf ~/.dotfiles
