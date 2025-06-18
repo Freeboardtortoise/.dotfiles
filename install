@@ -1,12 +1,5 @@
 echo "Installing packages..."
-sudo pacman -S -q --noconfirm --needed \
-    hyprland hyprlock hyprpaper waybar kitty wofi \
-    micro vim dolphin git zellij btop dust \
-    firewalld ipset ebtables \
-    zsh ttf-font-awesome ttf-firacode-nerd \
-    lib32-nvidia-utils egl-wayland nvidia nvidia-utils nvidia-settings \
-    pycharm-community-edition curl firefox
-    
+sudo pacman -S -q --noconfirm --needed hyprland hyprlock hyprpaper waybar kitty wofi micro vim dolphin git zellij btop dust firewalld ipset ebtables zsh ttf-font-awesome ttf-firacode-nerd lib32-nvidia-utils egl-wayland nvidia nvidia-utils nvidia-settings pycharm-community-edition curl
 echo "Copying Hyprland-related config files..."
 mkdir -p ~/.config/hypr
 cp ~/.dotfiles/hypr/hyprland.conf ~/.config/hypr/
@@ -21,6 +14,10 @@ cp ~/.dotfiles/waybar/style.css ~/.config/waybar/
 echo "Setting up Ghostty config..."
 mkdir -p ~/.config/ghostty
 cp -f ~/.dotfiles/ghostty/config ~/.config/ghostty/config
+
+echo "setting up Kirry config"
+mkdir -p ~/.config/kitty
+cp -f ~/.dotfiles/kitty.con ~/.config/kitty/
 
 echo "Installing yay..."
 sudo pacman -S -q --needed base-devel --noconfirm
