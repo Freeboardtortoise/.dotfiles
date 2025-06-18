@@ -1,5 +1,21 @@
 echo "Installing packages..."
-sudo pacman -S -q --noconfirm --needed hyprland hyprlock hyprpaper waybar kitty wofi micro vim dolphin git zellij btop dust firewalld ipset ebtables zsh ttf-font-awesome ttf-firacode-nerd lib32-nvidia-utils egl-wayland nvidia nvidia-utils nvidia-settings pycharm-community-edition curl
+
+sudo pacman -S -q --noconfirm --needed hyprlock
+sudo pacman -S -q --noconfirm --needed hyprpaper
+sudo pacman -S -q --noconfirm --needed waybar
+sudo pacman -S -q --noconfirm --needed kitty
+sudo pacman -S -q --noconfirm --needed wofi
+sudo pacman -S -q --noconfirm --needed helix
+sudo pacman -S -q --noconfirm --needed vim
+sudo pacman -S -q --noconfirm --needed dolphin
+sudo pacman -S -q --noconfirm --needed git btop
+sudo pacman -S -q --noconfirm --needed dust firewalld
+sudo pacman -S -q --noconfirm --needed ipset
+sudo pacman -S -q --noconfirm --needed ttf-font-awesome ttf-firacode-nerd
+sudo pacman -S -q --noconfirm --needed lib32-nvidia-utils egl-wayland nvidia
+sudo pacman -S -q --noconfirm --needed nvidia-settings curl
+
+
 echo "Copying Hyprland-related config files..."
 mkdir -p ~/.config/hypr
 cp ~/.dotfiles/hypr/hyprland.conf ~/.config/hypr/
@@ -52,6 +68,10 @@ echo "Setting up Zsh..."
 chsh -s /bin/zsh
 yay -S --noconfirm zsh-theme-powerlevel10k-git
 cp ~/.dotfiles/.p10k.zsh ~/
+
+echo "setting up wofi and coppying configs..."
+cp -r ~/.dotfiles/wofi ~/.config/
+
 
 # adding the hyprland to the startup list
 cp ~/.dotfiles/.bash_profile ~/

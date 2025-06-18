@@ -1,0 +1,11 @@
+mode = drun
+show = drun
+term = foot
+width = 1000
+lines = 15
+prompt = Search:
+hide_scroll = false
+allow_markup = true
+no_actions = true
+css = ~/.config/wofi/style.css
+
