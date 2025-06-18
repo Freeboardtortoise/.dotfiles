@@ -1,4 +1,4 @@
-echo "Installing packages..."
+	echo "Installing packages..."
 
 sudo pacman -S -q --noconfirm --needed hyprlock
 sudo pacman -S -q --noconfirm --needed hyprpaper
@@ -14,6 +14,11 @@ sudo pacman -S -q --noconfirm --needed ipset
 sudo pacman -S -q --noconfirm --needed ttf-font-awesome ttf-firacode-nerd
 sudo pacman -S -q --noconfirm --needed lib32-nvidia-utils egl-wayland nvidia
 sudo pacman -S -q --noconfirm --needed nvidia-settings curl
+
+
+#installing p10k
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.local/share/powerlevel10k
 
 
 echo "Copying Hyprland-related config files..."
@@ -64,10 +69,7 @@ cp ~/.dotfiles/.vimrc ~/
 cp ~/.dotfiles/.vimrc.plug ~/
 mkdir -p ~/.vim/plug ~/.vim/plugged ~/.vim/autoload
 
-echo "Setting up Zsh..."
-chsh -s /bin/zsh
-yay -S --noconfirm zsh-theme-powerlevel10k-git
-cp ~/.dotfiles/.p10k.zsh ~/
+
 
 echo "setting up wofi and coppying configs..."
 cp -r ~/.dotfiles/wofi ~/.config/
